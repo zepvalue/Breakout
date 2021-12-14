@@ -28,6 +28,9 @@ APaddle::APaddle()
 void APaddle::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//Calculate the MoveForce based on mass
+	MoveForce *= Mesh->GetMass();
 }
 
 void APaddle::MoveHorizontal(float const Value)
