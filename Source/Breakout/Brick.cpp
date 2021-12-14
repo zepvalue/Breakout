@@ -9,12 +9,19 @@ ABrick::ABrick()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
+	RootComponent = Mesh;
+
+
 }
 
 // Called when the game starts or when spawned
 void ABrick::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Mesh->OnComponentHit.AddDynamic(this, &ABrick::onHit);
+
 	
 }
 
@@ -23,5 +30,11 @@ void ABrick::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ABrick::onHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+	FVector NormalImpulse, const FHitResult& Hit)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, TEXT("HIT"));
 }
 
