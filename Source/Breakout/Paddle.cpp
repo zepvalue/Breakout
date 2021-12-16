@@ -10,19 +10,27 @@
 APaddle::APaddle()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 	
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
-	SpringArm = CreateDefaultSubobject<USpringArmComponent>("SpringArm");
-	Camera = CreateDefaultSubobject<UCameraComponent>("Camera");
-	
-	RootComponent = Mesh;
-	
-	SpringArm->SetupAttachment(Mesh);
-	Camera->SetupAttachment(SpringArm);
 
+	RootComponent = Mesh;
 	Mesh->SetSimulatePhysics(true);
 }
+
+// Called every frame
+void APaddle::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if(!MovementDirection.IsZero())
+	{
+		const FVector NewLocation = GetActorLocation() + (MovementDirection * DeltaTime * MovementSpeed) ;
+		SetActorLocation(NewLocation);
+	}
+
+}
+
+
 
 // Called when the game starts or when spawned
 void APaddle::BeginPlay()
@@ -35,8 +43,7 @@ void APaddle::BeginPlay()
 
 void APaddle::MoveHorizontal(float const Value)
 {
-	const FVector Right = Camera->GetRightVector() * MoveForce * Value;
-	Mesh->AddForce(Right); 
+	MovementDirection.X = FMath::Clamp(Value,-1.0f,1.0f);
 }
 
 // Called to bind functionality to input

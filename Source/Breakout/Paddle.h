@@ -6,8 +6,6 @@
 #include "GameFramework/Pawn.h"
 #include "Paddle.generated.h"
 
-class UCameraComponent;
-class USpringArmComponent;
 UCLASS()
 class BREAKOUT_API APaddle : public APawn
 {
@@ -23,20 +21,22 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
 	UStaticMeshComponent* Mesh;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
-	USpringArmComponent* SpringArm;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
-	UCameraComponent* Camera;
-	
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MoveForce = 500.0f;
 
 	
-public:	
+public:
+	virtual void Tick(float DeltaTime) override;
+	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
+
+	FVector MovementDirection;
+	UPROPERTY(EditAnywhere, Category="Movement")
+	float MovementSpeed = 500.0f;
 	void MoveHorizontal(float Value);
 
 };
