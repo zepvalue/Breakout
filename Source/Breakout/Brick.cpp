@@ -3,11 +3,13 @@
 
 #include "Brick.h"
 
+#include "BreakoutGameModeBase.h"
+
 // Sets default values
 ABrick::ABrick()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
 	RootComponent = Mesh;
@@ -25,16 +27,15 @@ void ABrick::BeginPlay()
 	
 }
 
-// Called every frame
-void ABrick::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
 void ABrick::onHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, TEXT("HIT"));
+}
+
+void ABrick::Collected_Implementation()
+{
+	ABreakoutGameModeBase* GameMode = Cast<ABreakoutGameModeBase>(GetWorld()->GetAuthGameMode());
+	if(GameMode) GameMode->BrickBroken();
 }
 
