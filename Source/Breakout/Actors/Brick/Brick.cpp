@@ -2,8 +2,7 @@
 
 
 #include "Brick.h"
-
-#include "BreakoutGameModeBase.h"
+#include "Breakout/GameMode/BreakoutGameModeBase.h"
 
 // Sets default values
 ABrick::ABrick()
@@ -13,8 +12,7 @@ ABrick::ABrick()
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
 	RootComponent = Mesh;
-
-
+	
 }
 
 // Called when the game starts or when spawned
@@ -27,7 +25,6 @@ void ABrick::BeginPlay()
 void ABrick::onHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
-	
 	Collected();
 	Destroy();
 }
