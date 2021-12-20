@@ -21,16 +21,15 @@ ABrick::ABrick()
 void ABrick::BeginPlay()
 {
 	Super::BeginPlay();
-
 	Mesh->OnComponentHit.AddDynamic(this, &ABrick::onHit);
-
-	
 }
 
 void ABrick::onHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, TEXT("HIT"));
+	
+	Collected();
+	Destroy();
 }
 
 void ABrick::Collected_Implementation()
