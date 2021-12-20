@@ -36,7 +36,7 @@ private:
 
 	FVector MovementDirection;
 	UPROPERTY(EditAnywhere, Category="Movement")
-	float MovementSpeed = 500.0f;
+	float MovementSpeed = 700.0f;
 	void MoveHorizontal(float Value);
 
 };

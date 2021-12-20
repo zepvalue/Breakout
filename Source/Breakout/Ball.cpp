@@ -18,6 +18,11 @@ ABall::ABall()
 void ABall::BeginPlay()
 {
 	Super::BeginPlay();
+	constexpr float InitialX = 400;
+	constexpr float InitialY = 400;
+	
+	const FVector Force = FVector(InitialX,InitialY,0);
+	Mesh->AddForce(Force * MovementSpeed);
 	
 }
 
