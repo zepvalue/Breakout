@@ -17,5 +17,4 @@ class BREAKOUT_API UBreakoutUserWidget : public UUserWidget
 public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void SetItemText(int32 BricksBroken, int32 BricksInLevel);
-	
 };
