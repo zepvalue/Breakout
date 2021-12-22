@@ -23,6 +23,5 @@ protected:
 
 	UFUNCTION()
 	void OnBeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
-	void Respawn(ABall*);
 	
 };

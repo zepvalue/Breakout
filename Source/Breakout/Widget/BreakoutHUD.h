@@ -27,6 +27,8 @@ public:
 	void UpdateBrickText(int32 BricksBroken, int32 BricksInLevel);
 	UFUNCTION()
 	void UpdateLivesText(int32 Lives);
+	UFUNCTION()
+	void DrawGameOverText();
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Interactive")

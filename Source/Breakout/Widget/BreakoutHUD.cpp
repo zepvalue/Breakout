@@ -45,3 +45,11 @@ void ABreakoutHUD::UpdateLivesText(int32 Lives)
 	}
 }
 
+void ABreakoutHUD::DrawGameOverText()
+{
+	if(GameWidget)
+	{
+		GameWidget->SetGameOverText();
+	}
+}
+
