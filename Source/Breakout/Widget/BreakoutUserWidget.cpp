@@ -3,3 +3,24 @@
 
 #include "BreakoutUserWidget.h"
 
+UBreakoutUserWidget::UBreakoutUserWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+}
+
+void UBreakoutUserWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+}
+
+void UBreakoutUserWidget::SetBricksText(int32 BricksBroken, int32 BricksInLevel)
+{
+	BricksText->SetText(FText::FromString(FString::Printf(TEXT("Bricks %d / %d"), BricksBroken,BricksInLevel)));
+}
+
+void UBreakoutUserWidget::SetLivesText(int32 Lives)
+{
+	LivesText->SetText(FText::FromString(FString::Printf(TEXT("Lives %d"), Lives)));
+}
+
+
+

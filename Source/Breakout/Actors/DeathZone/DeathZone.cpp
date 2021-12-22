@@ -18,7 +18,7 @@ void ADeathZone::BeginPlay()
 void ADeathZone::OnBeginOverlap(AActor* OverlappedActor,AActor* OtherActor)
 {
 	ABreakoutGameModeBase* GameMode = Cast<ABreakoutGameModeBase>(GetWorld()->GetAuthGameMode());
-	if(GameMode) GameMode->GameOver(OtherActor);
+	if(GameMode) GameMode->LoseLife();
 }
 
 
