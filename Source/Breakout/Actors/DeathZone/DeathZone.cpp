@@ -2,7 +2,7 @@
 
 
 #include "DeathZone.h"
-#include "Breakout/GameMode/BreakoutGameModeBase.h"
+#include "Breakout/GMode/BreakoutGameModeBase.h"
 
 
 ADeathZone::ADeathZone()
@@ -15,6 +15,7 @@ void ADeathZone::BeginPlay()
 	OnActorBeginOverlap.AddDynamic(this, &ADeathZone::OnBeginOverlap);
 }
 
+//Let the gamemode handle the respawning on LoseLife
 void ADeathZone::OnBeginOverlap(AActor* OverlappedActor,AActor* OtherActor)
 {
 	ABreakoutGameModeBase* GameMode = Cast<ABreakoutGameModeBase>(GetWorld()->GetAuthGameMode());

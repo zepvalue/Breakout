@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Breakout/Widget/BreakoutHUD.h"
-#include "Breakout/GameMode/BreakoutGameModeBase.h"
+#include "Breakout/GMode/BreakoutGameModeBase.h"
 
 ABreakoutHUD::ABreakoutHUD()
 {

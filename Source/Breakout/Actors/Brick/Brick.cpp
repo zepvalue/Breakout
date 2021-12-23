@@ -2,7 +2,7 @@
 
 
 #include "Brick.h"
-#include "Breakout/GameMode/BreakoutGameModeBase.h"
+#include "Breakout/GMode/BreakoutGameModeBase.h"
 
 // Sets default values
 ABrick::ABrick()
@@ -20,6 +20,7 @@ void ABrick::BeginPlay()
 {
 	Super::BeginPlay();
 	Mesh->OnComponentHit.AddDynamic(this, &ABrick::onHit);
+	
 }
 
 void ABrick::onHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
